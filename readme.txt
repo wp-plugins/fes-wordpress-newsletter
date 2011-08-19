@@ -36,15 +36,16 @@ Compatible 100% with an external [newsletter software](http://www.fastemailsende
 
 = Plugin Settings =
 
-* E-mail address for managing subscriptions
-* Message to subscriber - subject
-* Message to subscriber - content
-* Double Opt-in
-* Link Love (enable and disable)
-* Front side messages
+* E-mail address for managing subscriptions (edit)
+* Message to subscriber - EMail subject (edit)
+* Message to subscriber - EMail content (edit)
+* Double Opt-in option (enable and disable)
+* Terms and conditions option (edit, enable and disable)
+* Front side messages (edit)
 * Front side appearance and custom fields
-* Temporary db of newly subscribed members
-* Automatic temporary db cleanup
+* Credits (enable and disable)
+* Preview and export in CSV subscribed members
+* Send newsletter Text Plain / HTML using Local or SMTP delivery method
 
 == Screenshots ==
 
