@@ -52,6 +52,3 @@ delete_option('wpfes_form_css');
 
 
 ?>
-
-
-?>
