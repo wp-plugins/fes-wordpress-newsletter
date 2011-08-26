@@ -223,6 +223,10 @@ function wpfes_insert ($cnt) {
 	 return $cnt;
 }
 
+function wpfes_opt_in_form_func( $atts ) {
+	return wpfes_show_form(true);
+}
+add_shortcode( 'wpfes_opt_in_form', 'wpfes_opt_in_form_func' );
 
 register_activation_hook(__FILE__, 'wpfes_install');
 add_action('admin_menu', 'wpfes_add_to_menu');

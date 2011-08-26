@@ -254,4 +254,4 @@
 <script type="text/javascript">
 alternate_table_rows('options-table');
 </script>
-<p class="info-tip"><b>How to insert the module in a page:</b> <small>1) install the <a href="http://wordpress.org/extend/plugins/exec-php/">exec php</a> plugin; 2) insert this code in your pages: &lt;?php wpfes_opt_in(); ?&gt;</small></p>
+<p class="info-tip"><b>How to insert the module in a page or post?</b> <small> Insert this shortcode in your pages or posts: &#91;wpfes_opt_in_form&#93;</small></p>
