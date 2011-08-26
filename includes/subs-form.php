@@ -33,8 +33,6 @@ if (is_array($wpfes_flds)) {
 }
 $out .= '<script type="text/javascript">
 //<![CDATA[
-
-
 function wpfes_toggle_custom_fields (state) {
     for (i=2; i<16; i++) {
         if (obj = document.getElementById(\'wpfes_fld_\'+i)) {
@@ -46,8 +44,7 @@ function wpfes_toggle_custom_fields (state) {
 function wpfes_check_form(){
     var showCheckbox=';
     $out.=$terms_check ? '1' : '0';
-
-
+	
 $out.=';
     if(document.getElementById("wpfes_email").value){
         if(showCheckbox>0){
@@ -76,9 +73,7 @@ function newsletter_check_and_show_agreement() {
     document.getElementById("wpfes_agree_terms").checked=true;
 }
 //]]>
-</script>
-
-';
+</script>';
 $out .= '<p class="wpfes_form_label"><input type="radio" name="wpfes_radio_option" id="wpfes_radio_option1" onclick="wpfes_toggle_custom_fields(1)" class="wpfes_form_radio" value="wpfes_radio_in" checked="checked" /> '.$wpfes_flds['wpfes_radio_in'];
 $out .= '<br/>';
 $out .= '<input type="radio" name="wpfes_radio_option" id="wpfes_radio_option2" onclick="wpfes_toggle_custom_fields(0)" class="wpfes_form_radio" value="wpfes_radio_out" /> '.$wpfes_flds['wpfes_radio_out'].'</p>';
@@ -94,12 +89,8 @@ if($terms_check){
     <div onclick="change_newsletter_agreement_visibility(\'none\');" class="newsletter-close">&nbsp;X&nbsp;</div>
     <h3 class="widget-title">Newsletter agreement</h3>
     <div id="newsletter-agreement-text">'.$terms_text.'</div>
-</div>
-
-
-';
+</div>';
 }
-
 
 $out .= '<p class="wpfes_form_label"><input type="submit" value="' . get_option('wpfes_form_send');
 $out .= '" class="wpfes_form_btn" /></p>' . "\n</form>\n<!-- Made by www.fastemailsender.com Newsletter Software Opt-in -->\n";
