@@ -84,6 +84,7 @@ Yes. You can use HTML tags and inline CSS in the Body message of the newsletter 
 = How I can add the newsletter form in pages or posts ? =
 
 Insert this shortcode in your pages or posts: `[wpfes_opt_in_form]`.
+
 If you want to insert the plugin in any template use this code: `<?php wpfes_opt_in(); ?>`.
 
 = It is possible to display off the credits of developer ? = 
