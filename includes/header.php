@@ -32,9 +32,9 @@ table tr th {
 .info-tip {
     padding-left: 40px;
     background-repeat: no-repeat;
-    background-image: url('../wp-content/plugins/fes-newsletter/includes/info-tip.png');
+    background-image: url('../wp-content/plugins/fes-wordpress-newsletter/includes/info-tip.png');
     background-position: left middle;
-    line-height:32px;
+    line-height:28px;
 	margin:5px 0;
 }
 .float-left {

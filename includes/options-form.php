@@ -2,11 +2,18 @@
     <table width="100%" cellspacing="2" cellpadding="5" class="optiontable editform" id="options-table">
     <tr class="row-header"><td colspan="2">General settings</td></tr>
       <tr>
-        <th scope="row">Mailbox for collecting subscriptions:</th>
+        <th scope="row">Email where you will get notified:</th>
         <td>           
 	    <input type="hidden" name="wpfes_hidden" value="SAb13c" />
             <input type="text" name="wpfes_email_from" id="wpfes_email_from" value="<?php echo $email_from; ?>" size="80" />
         </td>
+      </tr>
+      <tr>
+        <th scope="row">Double Opt-in:</th>
+        <td>
+          <input type="checkbox" name="wpfes_double_optin" id="wpfes_double_optin" value="1"<?php echo $double_optin ? " checked=\"checked\"" : "";?> />
+          If checked you will receive subscribing emails only when user clicks 
+          on the appropriate link inside confirmation message.</td>
       </tr>
       <tr> 
         <th scope="row">Message to subscriber<br />SUBJECT:</th>
@@ -20,16 +27,9 @@
           <p> 
             <textarea name="wpfes_email_message" id="wpfes_email_message" rows="6" cols="70"><?php echo $email_message; ?></textarea>
           </p>
-          <p class="info-tip">Use the <i>#link#</i> placeholder where you want the URL for confirming
-            subscription to appear <small>(only if <strong>Double Opt-in</strong> is checked)</small>. </p>
+          <p class="info-tip"><strong>SUBJECT</strong> and <strong>BODY</strong> fields are required only if <strong>Double Opt-in</strong> is checked.<br /><small>Use the <i>#link#</i> placeholder in BODY field where you want the URL for confirming
+            subscription to appear.</small> </p>
         </td>
-      </tr>
-      <tr>
-        <th scope="row">Double Opt-in:</th>
-        <td>
-          <input type="checkbox" name="wpfes_double_optin" id="wpfes_double_optin" value="1"<?php echo $double_optin ? " checked=\"checked\"" : "";?> />
-          If checked you will receive subscribing emails only when user clicks 
-          on the appropriate link inside confirmation message.</td>
       </tr>
       <!--tr>
         <th scope="row">Is message in HTML?</th>
@@ -50,13 +50,13 @@
 
     <tr class="row-header"><td colspan="2">Front side messages</td></tr>
       <tr> 
-        <th scope="row">Bad e-mail address:</th>
+        <th scope="row">Message if email address is not valid:</th>
         <td> 
           <input type="text" name="wpfes_msg_bad" id="wpfes_msg_bad" value="<?php echo $msg_bad; ?>" size="80" />
         </td>
       </tr>
       <tr>
-        <th scope="row">Duplicate e-mail address:</th>
+        <th scope="row">Message if email address is duplicate:</th>
         <td>
           <input type="text" name="wpfes_msg_dbl" id="wpfes_msg_dbl" value="<?php echo $msg_dbl; ?>" size="80" />
         </td>
@@ -68,13 +68,13 @@
         </td>
       </tr>
       <tr>
-        <th scope="row">Success:</th>
+        <th scope="row">Subscribe message:</th>
         <td> 
           <input type="text" name="wpfes_msg_sent" id="wpfes_msg_sent" value="<?php echo $msg_sent; ?>" size="80" />
         </td>
       </tr>
 	  <tr> 
-        <th scope="row">Unsubscribe success:</th>
+        <th scope="row">Unsubscribe message:</th>
         <td> 
           <input type="text" name="wpfes_form_fld[wpfes_unsubscr_success]" id="wpfes_unsubscr_success" value="<?php echo $form_fields['wpfes_unsubscr_success']; ?>" size="80" />
         </td>
@@ -94,10 +94,10 @@
       <tr>
         <th scope="row">Terms and conditions</th>
         <td> 
-            <input type="checkbox" name="wpfes_terms_check" id="wpfes_terms_check" value="1"<?php echo $terms_check ? " checked=\"checked\"" : "";?> /><label for="wpfes_terms_check">Show checkbox and link</label><br />
-                <textarea rows="5" cols="70" name="wpfes_terms_text"><?php echo $terms_text ?></textarea><br />
-                Link text:<br />
+            <input type="checkbox" name="wpfes_terms_check" id="wpfes_terms_check" value="1"<?php echo $terms_check ? " checked=\"checked\"" : "";?> /> <label for="wpfes_terms_check">Activate agreement link:</label>
                 <input type="text" name="wpfes_terms_link" id="wpfes_terms_link" value="<?php echo $terms_link; ?>" size="80" /><br />
+                Terms and conditions text:
+                <textarea rows="5" cols="70" name="wpfes_terms_text"><?php echo $terms_text ?></textarea>
                 Message if not checked<br />
                 <input type="text" name="wpfes_terms_msg" id="wpfes_terms_msg" value="<?php echo $terms_msg; ?>" size="80" />
         </td>
@@ -117,9 +117,9 @@
         </td>
       </tr>
       <tr> 
-        <th scope="row">E-mail field #1</th>
-        <td> <p class="info-tip">First field (E-mail) is mandatory and cannot be removed, just renamed.</p>
-            <input type="text" name="wpfes_form_email" id="wpfes_form_email" value="<?php echo $form_email; ?>" size="40" maxlength="64" /><br /><br />
+        <th scope="row">E-mail field #1 (*)</th>
+        <td> <br /><br /><input type="text" name="wpfes_form_email" id="wpfes_form_email" value="<?php echo $form_email; ?>" size="40" maxlength="64" />
+        <p class="info-tip"><small>E-mail filed is mandatory and cannot be removed, just renamed.</small></p>
             </td>
       </tr>
       <tr> 
@@ -233,8 +233,7 @@
       <tr>
         <th scope="row">Credits:</th>
         <td> 
-          <input type="checkbox" name="wpfes_link_credits" id="wpfes_link_credits" value="1"<?php echo $link_credits ? " checked=\"checked\"" : "";?> />
-          If unchecked display off plugin credits from sidebar.</td>
+          <input type="checkbox" name="wpfes_link_credits" id="wpfes_link_credits" value="1"<?php echo $link_credits ? " checked=\"checked\"" : "";?> /> <label for="wpfes_link_credits">If unchecked display off plugin credits from sidebar.</label></td>
       </tr>
       <tr>
         <th scope="row">Custom CSS layout:</th>
@@ -254,4 +253,4 @@
 <script type="text/javascript">
 alternate_table_rows('options-table');
 </script>
-<p class="info-tip"><b>How to insert the module in a page or post?</b> <small> Insert this shortcode in your pages or posts: &#91;wpfes_opt_in_form&#93;</small></p>
+<p class="info-tip"><strong>How to display newsletter plugin in pages or posts ?</strong> <br />Insert this shortcode <code>&#91;wpfes_opt_in_form&#93;</code> in the content of any pages or posts.</p>

@@ -48,28 +48,28 @@ add_or_update_option("wpfes_db_version", $wpfes_db_version, true);
 $blogname = get_option('blogname');
 add_or_update_option('wpfes_widget_title', 'Newsletter');
 add_or_update_option('wpfes_email_from', get_option('admin_email') );
-add_or_update_option('wpfes_email_subject', "[$blogname] Mailing list subscription");
-add_or_update_option('wpfes_email_message', "This is an automatic response to a subscription request started at $blogname.\nThanks for subscribing.\n\n#link#");
+add_or_update_option('wpfes_email_subject', "Newsletter subscription for $blogname");
+add_or_update_option('wpfes_email_message', "This is an automatic response to a subscription request started at $blogname.\n\nPlease click #link# to confirm your subscription.");
 add_or_update_option('wpfes_double_optin', "1");
 add_or_update_option('wpfes_link_credits', "1");
 add_or_update_option('wpfes_auto_delete', "0");
 add_or_update_option('wpfes_email_ishtml', "1");
 
 add_or_update_option('wpfes_terms_check', "1");
-add_or_update_option('wpfes_terms_text', "Terms and conditions text");
+add_or_update_option('wpfes_terms_text', "");
 add_or_update_option('wpfes_terms_link', "I agree to the site's terms and conditions.");
-add_or_update_option('wpfes_terms_msg', "You did not agree to the terms and conditions. Please check the agree box to continue.");
+add_or_update_option('wpfes_terms_msg', "You did not agree to the terms and conditions of $blogname. Please check the agree box to continue.");
 
 
-add_or_update_option('wpfes_msg_bad', "Bad e-mail address.");
+add_or_update_option('wpfes_msg_bad', "A valid email address is required.");
 add_or_update_option('wpfes_msg_dbl', "E-mail address already subscribed.");
 add_or_update_option('wpfes_msg_fail', "Failed sending to e-mail address.");
 add_or_update_option('wpfes_msg_sent', "Thanks for subscribing.");
 add_or_update_option('wpfes_dbl_fail', "E-mail address not found or already confirmed.");
 add_or_update_option('wpfes_dbl_sent', "Subscription confirmed. Thank you.");
 
-add_or_update_option('wpfes_form_header', "You may want to put header text here");
-add_or_update_option('wpfes_form_footer', "You may want to put footer text here");
+add_or_update_option('wpfes_form_header', "Subscribe to our newsletter");
+add_or_update_option('wpfes_form_footer', "");
 add_or_update_option('wpfes_form_email', "E-mail:");
 //add_option('wpfes_form_fields', "");
 add_or_update_option('wpfes_form_fields', array("wpfes_radio_in"=>"Subscribe",
