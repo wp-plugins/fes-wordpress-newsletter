@@ -94,10 +94,10 @@
       <tr>
         <th scope="row">Terms and conditions</th>
         <td> 
-            <input type="checkbox" name="wpfes_terms_check" id="wpfes_terms_check" value="1"<?php echo $terms_check ? " checked=\"checked\"" : "";?> /> <label for="wpfes_terms_check">Activate agreement link:</label>
+            <input type="checkbox" name="wpfes_terms_check" id="wpfes_terms_check" value="1"<?php echo $terms_check ? " checked=\"checked\"" : "";?> /> <label for="wpfes_terms_check">Activate agreement link:</label><br />
                 <input type="text" name="wpfes_terms_link" id="wpfes_terms_link" value="<?php echo $terms_link; ?>" size="80" /><br />
-                Terms and conditions text:
-                <textarea rows="5" cols="70" name="wpfes_terms_text"><?php echo $terms_text ?></textarea>
+                Terms and conditions text:<br />
+                <textarea rows="5" cols="70" name="wpfes_terms_text"><?php echo $terms_text ?></textarea><br />
                 Message if not checked<br />
                 <input type="text" name="wpfes_terms_msg" id="wpfes_terms_msg" value="<?php echo $terms_msg; ?>" size="80" />
         </td>

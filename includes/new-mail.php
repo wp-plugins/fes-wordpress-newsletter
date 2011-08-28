@@ -72,10 +72,10 @@ if ($users = $wpdb->get_results("SELECT * FROM $table_users WHERE `msg_sent` = '
     </tr>
     <tr>
         <th>Message body:</th>
-        <td colspan="2">&nbsp;</td>
+        <td colspan="2"><textarea rows="10" cols="70" id="mail-body" name="mail-body"></textarea></td>
     </tr>
     <tr>
-        <td colspan="3"><textarea rows="10" cols="70" id="mail-body" name="mail-body"></textarea></td>
+        <td colspan="3"></td>
     </tr>
     <tr>
         <td colspan="1"><input type="submit" value="Start sending" id="mail-send" name="mail-send" /></td>

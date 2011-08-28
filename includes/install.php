@@ -128,20 +128,19 @@ add_or_update_option('wpfes_form_css', "
     width: 400px;
     float: left;
     clear: left;
+	margin:0 0 5px 0;
 }
 
 #newsletter-agreement-text {
     width: 100%;
-    height: 380px;
+    height: 365px;
     overflow-y: scroll;
     clear: both;
+	padding:5px 0 10px 0;
 }
 
 .newsletter-close {
     float: right;
-    right: 0px;
-    top: 0px;
-    padding: 2px;
     background-color: black;
     color: white;
     cursor: pointer;
