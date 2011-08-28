@@ -28,11 +28,8 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 
 = Highlight Features =
 
-Compatible 100% with an external [newsletter software](http://www.fastemailsender.com/newsletter-software.html "Fast Email Sender").
-
-* Your subscribed users list can be automatically imported in Fast Email Sender software recipients groups. This feature is available in the full version of [bulk email software](http://www.fastemailsender.com "Bulk Email Software").
-* In Fast Email Sender Trial Version you can import manual your subscribed users list after you export .CSV file from *WordPress Newsletter Plugin > Settings > Subscribed users > Download list as: CSV*.
-
+* Compatible 100% with external [newsletter software](http://www.fastemailsender.com/newsletter-software.html). Your subscribed users list can be automatically synchronized with Fast Email Sender software a great [bulk email software](http://www.fastemailsender.com "Fast Email Sender"). This feature is not available in trial version.
+* Export to .CSV file and import in any favorite mass mailer software.
 
 = Plugin Settings =
 
@@ -62,8 +59,8 @@ This section describes how to install the plugin and get it working.
 
 1. Unzip the downloaded archive
 2. Extract **fes-newsletter.zip** and upload the folder **fes newsletter** to */wp-content/plugins/* directory
-3. Activate the plugin from *Plugins > FES Newsletter WordPress > Activate*, under WordPress admin interface
-4. In the *Appearance > Widgets* menu, drag to your sidebar the FES WordPress Newsletter plugin.
+3. Activate **FES Newsletter WordPress** from *Plugins*, under your WordPress admin interface
+4. Drag to your sidebar the FES WordPress Newsletter plugin from *Appearance > Widgets*. 
 5. Change settings and manage plugin from *Settings > FES WordPress Newsletter*.
 6. More information about plugin at developer page [WordPress Newsletter Plugin](http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin.html).
 
@@ -75,19 +72,19 @@ If Doubled Opt-in option is checked subscribed user will receive an instant emai
 
 = How I can customize design of the newsletter form ? =
 
-You can change CSS styles from *FES WordPress Newsletter Plugin > Settings > Custom CSS layout*. Default CSS classes are defined from installation.
+You can change CSS styles from *Settings > FES WordPress Newsletter > Custom CSS layout*. Default CSS classes are defined from installation.
 
 = It is possible to send HTML newsletters with this plugin ? =
 
-Yes. You can use HTML tags and inline CSS in the Body message of the newsletter under *FES WordPress Newsletter Plugin > Send Newsletter*.
+Yes. You can use HTML tags and inline CSS in the Body message of the newsletter under *Settings > FES WordPress Newsletter > Send Newsletter*.
 
 = How I can add the newsletter form in pages or posts ? =
 
-Insert this shortcode in your pages or posts: `[wpfes_opt_in_form]`.
+Insert this shortcode `[wpfes_opt_in_form]` in the content of any pages or posts.
 
 If you want to insert the plugin in any template use this code: `<?php wpfes_opt_in(); ?>`.
 
 = It is possible to display off the credits of developer ? = 
 
-Yes. If you wish to don't want to display anymore developer credit links you can disable it from *FES WordPress Newsletter Plugin > Settings > Credits* (Uncheck box).
+Yes. If you wish to don't want to display anymore developer credit links uncheck box from *Settings > FES WordPress Newsletter > Options*.
 
