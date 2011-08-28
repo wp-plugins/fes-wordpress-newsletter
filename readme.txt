@@ -58,10 +58,10 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 This section describes how to install the plugin and get it working.
 
 1. Unzip the downloaded archive
-2. Extract **fes-newsletter.zip** and upload the folder **fes newsletter** to */wp-content/plugins/* directory
-3. Activate **FES Newsletter WordPress** from *Plugins*, under your WordPress admin interface
-4. Drag to your sidebar the FES WordPress Newsletter plugin from *Appearance > Widgets*. 
-5. Change settings and manage plugin from *Settings > FES WordPress Newsletter*.
+2. Extract **fes-newsletter.zip** and upload the folder **fes newsletter** to `/wp-content/plugins/`
+3. Activate **FES Newsletter WordPress** from `Plugins`, under your WordPress admin interface
+4. Drag to your sidebar the **FES WordPress Newsletter** from `Appearance > Widgets`. 
+5. Change settings and manage plugin from `Settings > FES WordPress Newslette`.
 6. More information about plugin at developer page [WordPress Newsletter Plugin](http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin.html).
 
 == Frequently Asked Questions ==
