@@ -7,6 +7,7 @@ Description: Designed with speed in mind, this FREE plugin enables any website/b
 Version: 1.0.0
 Author: Fast Email Sender Team
 Author URI: http://www.fastemailsender.com/
+Text Domain: newsletter-plugin
 */
 
 /*
