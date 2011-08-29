@@ -55,8 +55,7 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
+= How to install =
 1. Unzip the downloaded archive
 2. Extract *newsletter-plugin.zip* and upload the folder *newsletter plugin* to `/wp-content/plugins/`
 3. Activate from `Plugins`, under your WordPress admin interface
