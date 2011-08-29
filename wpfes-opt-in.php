@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: FES Newsletter WordPress
+Plugin Name: Newsletter Plugin
 Plugin URI: http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin/
 Description: Designed with speed in mind, this FREE plugin enables any website/blog to store a list of newsletter subscriptions. You can store custom fields, like gender, country or job department, and send emails to your subscribers straight from your website's admin interface. The subscribers list can also be downloaded as a CSV file, compatible with most newsletter software programs. The plugin features a double-opt-in process, so visitors can only register themselves, and a newsletter-agreement box, to keep complaints about spamming to a minimum. To make it easier for you to use the plugin, there is a Custom CSS field, so you don't have to change any files in your theme.
 Version: 1.0.0
@@ -131,7 +131,7 @@ function wpfes_options() {
 	
 ?>
 <div class="wrap">
-  <h2>FES WordPress Newsletter Options</h2>
+  <h2>Newsletter Plugin Options</h2>
 <?php
 wpfes_echo_header();
 
@@ -184,25 +184,25 @@ function wpfes_widget_init() {
 	$width = 300;
 	$height = 100;
 	if ( '2.2' == $wp_version || (!function_exists( 'wp_register_sidebar_widget' ))) {
-		register_sidebar_widget('FES WordPress Newsletter', 'wpfes_widget');
-		register_widget_control('FES WordPress Newsletter', 'wpfes_widget_control', $width, $height);
+		register_sidebar_widget('Newsletter Plugin', 'wpfes_widget');
+		register_widget_control('Newsletter Plugin', 'wpfes_widget_control', $width, $height);
 	} else {
 
 	// v2.2.1+
 		$size = array('width' => $width, 'height' => $height);
 		$class = array( 'classname' => 'wpfes_opt_in' ); // css classname
-		wp_register_sidebar_widget('wpfes', 'FES WordPress Newsletter', 'wpfes_widget', $class);
-		wp_register_widget_control('wpfes', 'FES WordPress Newsletter', 'wpfes_widget_control', $size);
+		wp_register_sidebar_widget('wpfes', 'Newsletter Plugin', 'wpfes_widget', $class);
+		wp_register_widget_control('wpfes', 'Newsletter Plugin', 'wpfes_widget_control', $size);
 	}
 	if (function_exists('register_sidebar_module')) {
 		$class = array( 'classname' => 'wpfes_opt_in' ); // css classname
-		register_sidebar_module('FES WordPress Newsletter', 'wpfes_widget', '', $class);
-		register_sidebar_module_control('FES WordPress Newsletter', 'wpfes_widget_control');
+		register_sidebar_module('Newsletter Plugin', 'wpfes_widget', '', $class);
+		register_sidebar_module_control('Newsletter Plugin', 'wpfes_widget_control');
 	}
 }
 
 function wpfes_add_to_menu() {
-	add_options_page('WP Fast Email Sender Opt-in Options', 'FES WordPress Newsletter', 7, __FILE__, 'wpfes_options' );
+	add_options_page('WP Fast Email Sender Opt-in Options', 'Newsletter Plugin', 7, __FILE__, 'wpfes_options' );
 
 	add_filter('plugin_action_links', 'wpfes_filter_plugin_actions_links', 10, 2);//ET
 }
