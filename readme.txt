@@ -56,7 +56,7 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 == Installation ==
 
 = How to install =
-1. Install automatically through the 'Plugins > Add New' in WordPress Admin, or extract zip file and upload the fes-wordpress-newsletter folder to the `/wp-content/plugins/` directory.
+1. Install automatically through the 'Plugins > Add New' in WordPress Admin, or extract zip file and upload the `fes-wordpress-newsletter` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 = How to use =
