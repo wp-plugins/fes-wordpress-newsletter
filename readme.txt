@@ -1,7 +1,7 @@
 === Newsletter Plugin ===
 Contributors: fesoftware
 Donate link: http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin
-Tags: newsletter, newsletter subscription, send newsletter, newsletter plugin, newsletter widget, email newsletter, newsletter subscribe, email subscribe, newsletter sign-up, newsletter signnup
+Tags: newsletter, newsletter subscription, send newsletter, newsletter plugin, newsletter widget, email newsletter, newsletter subscribe, email subscribe, newsletter sign-up, newsletter signnup, sidebar
 Requires at least: 2.0.0
 Tested up to: 3.2.1
 Stable tag: 1.0.0
@@ -10,7 +10,7 @@ Store and manage newsletter subscribers list with custom form and send mass emai
 
 == Description ==
 
-This **FREE plugin** enables any website/blog to store a list of newsletter subscriptions. You can store custom fields like gender, country or job department, and send emails to your subscribers straight from your website's admin interface. The subscribers list can also be downloaded as a **CSV** file, compatible with most **newsletter software programs**. The plugin features a **double-opt-in** process, so visitors can only register themselves, and a newsletter-agreement box, to keep complaints about spamming to a minimum. To make it easier for you to use the plugin, there is a Custom CSS field, so you don't have to change any files in your theme.
+This **FREE plugin** enables any website/blog to store a list of newsletter subscriptions. You can store custom fields like gender, country or job department, and send emails to your subscribers straight from your website's admin interface. The subscribers list can also be downloaded as a **CSV** file, compatible with most newsletter software programs. The plugin features a **double-opt-in** process, so visitors can only register themselves, and a newsletter-agreement box, to keep complaints about spamming to a minimum. To make it easier for you to use the plugin, there is a Custom CSS field, so you don't have to change any files in your theme.
 
 = Plugin Features =
 
@@ -56,19 +56,19 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 == Installation ==
 
 = How to install =
-1. Unzip the downloaded archive
-2. Extract *newsletter-plugin.zip* and upload the folder *newsletter plugin* to `/wp-content/plugins/`
-3. Activate from `Plugins`, under your WordPress admin interface
+1. Install automatically through the 'Plugins > Add New' in WordPress Admin, or extract zip file and upload the fes-wordpress-newsletter folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 = How to use =
-1. Change settings and manage plugin from `Settings > Newsletter Plugin`.
-2. Drag to your sidebar the *Newsletter Plugin* from `Appearance > Widgets`. 
+1. Change settings and manage plugin from 'Settings > Newsletter Plugin'.
+2. Drag to your sidebar the *Newsletter Plugin* from 'Appearance > Widgets'. 
 3. Insert shortcode `[wpfes_opt_in_form]` in the content of any pages or posts.
 4. More information about plugin at developer page [WordPress Newsletter Plugin](http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin.html).
 
 = How to upgrade =
-1. Uninstall *Newsletter Plugin* from `Plugins`
-2. Install and activate *Newsletter Plugin* from `Plugins`
+1. Deactivate and delete *Newsletter Plugin* from 'Plugins'
+2. Search and install *Newsletter Plugin* from 'Plugins > Add new'
+2. Activate *Newsletter Plugin* from 'Plugins'
 
 == Frequently Asked Questions ==
 
@@ -78,11 +78,11 @@ If Doubled Opt-in option is checked subscribed user will receive an instant emai
 
 = How I can customize design of the newsletter form ? =
 
-You can change CSS styles from *Settings > Newsletter Plugin > Custom CSS layout*. Default CSS classes are defined from installation.
+You can change CSS styles from 'Settings > Newsletter Plugin > Custom CSS layout'. Default CSS classes are defined from installation.
 
 = It is possible to send HTML newsletters with this plugin ? =
 
-Yes. You can use HTML tags and inline CSS in the Body message of the newsletter under *Settings > Newsletter Plugin > Send Newsletter*.
+Yes. You can use HTML tags and inline CSS in the Body message of the newsletter under 'Settings > Newsletter Plugin > Send Newsletter'.
 
 = How I can add the newsletter form in pages or posts ? =
 
@@ -92,5 +92,5 @@ If you want to insert the plugin in any template use this code: `<?php wpfes_opt
 
 = It is possible to display off the credits of developer ? = 
 
-Yes. If you wish to don't want to display anymore developer credit links uncheck box from *Settings > Newsletter Plugin > Options*.
+Yes. If you wish to don't want to display anymore developer credit links uncheck box from 'Settings > Newsletter Plugin > Options'.
 
