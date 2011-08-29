@@ -67,8 +67,8 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 4. More information about plugin at developer page [WordPress Newsletter Plugin](http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin.html).
 
 = How to upgrade =
-1. Uninstall
-2. Install
+1. Uninstall *Newsletter Plugin* from `Plugins`
+2. Install and activate *Newsletter Plugin* from `Plugins`
 
 == Frequently Asked Questions ==
 
