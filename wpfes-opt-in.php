@@ -7,7 +7,6 @@ Description: Designed with speed in mind, this FREE plugin enables any website/b
 Version: 1.0.0
 Author: Fast Email Sender Team
 Author URI: http://www.fastemailsender.com/
-Text Domain: newsletter-plugin
 */
 
 /*
@@ -191,12 +190,12 @@ function wpfes_widget_init() {
 
 	// v2.2.1+
 		$size = array('width' => $width, 'height' => $height);
-		$class = array( 'classname' => 'wpfes_opt_in' ); // css classname
+		$class = array( 'classname' => 'wpfes_opt_in', 'description' => __('Newsletter form for email subscription')); // css classname
 		wp_register_sidebar_widget('wpfes', 'Newsletter Plugin', 'wpfes_widget', $class);
 		wp_register_widget_control('wpfes', 'Newsletter Plugin', 'wpfes_widget_control', $size);
 	}
 	if (function_exists('register_sidebar_module')) {
-		$class = array( 'classname' => 'wpfes_opt_in' ); // css classname
+		$class = array( 'classname' => 'wpfes_opt_in'); // css classname
 		register_sidebar_module('Newsletter Plugin', 'wpfes_widget', '', $class);
 		register_sidebar_module_control('Newsletter Plugin', 'wpfes_widget_control');
 	}
