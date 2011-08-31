@@ -123,8 +123,9 @@ foreach ($users as $user) {
 
     ?></tr>
 </table>
-<p class="info-tip">For more advanced newsletter sending options, please consider our dedicated product, <a href="http://www.fastemailsender.com/">Fast Email Sender</a>.<br />
-By default, CPanel hosted domains have a limitation of 250 emails per hour. If you exceed that, anything over the 250 limit will not be delivered.</p>
+<hr />
+<p class="info-tip">For more advanced newsletter sending options, please consider our dedicated product, <a href="http://www.fastemailsender.com/">Fast Email Sender</a>.<!--<br />
+By default, CPanel hosted domains have a limitation of 250 emails per hour. If you exceed that, anything over the 250 limit will not be delivered.--></p>
 
 
 
