@@ -88,8 +88,7 @@ $mail_host='mail.'.$mail_host;
 $email_from = stripslashes(get_option('wpfes_email_from'));
 
 
-add_or_update_option('wpfes_link_credits_text', '<a href="http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin/">Wordpress newsletter plugin</a> created by 
-    <a href="http://www.fastemailsender.com/">Bulk email sender</a>');
+add_or_update_option('wpfes_link_credits_text', '<a href="http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin/">Wordpress newsletter plugin</a> compatible with <a href="http://www.fastemailsender.com/">Bulk email sender</a>');
 
 add_or_update_option('wpfes_smtp_server', $mail_host);
 add_or_update_option('wpfes_smtp_port', "25");
