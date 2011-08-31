@@ -71,7 +71,7 @@ if ($users = $wpdb->get_results("SELECT * FROM $table_users WHERE `msg_sent` = '
         <td colspan="2"><input type="text" name="mail-subject" id="mail-subject" maxlength="100" size="70" /></td>
     </tr>
     <tr>
-        <th>Message body:</th>
+        <th>Message body:<br /><small>You may use HTML tags</small></th>
         <td colspan="2"><textarea rows="10" cols="70" id="mail-body" name="mail-body"></textarea></td>
     </tr>
     <tr>
