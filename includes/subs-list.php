@@ -46,7 +46,6 @@ if ($users = $wpdb->get_results("SELECT * FROM $table_users ORDER BY `id` DESC")
         <tr align="right">
             <td colspan="6">
     <script type="text/javascript">
-    //<![CDATA[
     function confirm_purge (frm) {
         if(frm.purge.selectedIndex != 0 && confirm('Are you sure you want to proceed?')) {
             top.location.href='<?php echo $url; ?>&purge=' + frm.purge.options[frm.purge.selectedIndex].value;
@@ -55,7 +54,6 @@ if ($users = $wpdb->get_results("SELECT * FROM $table_users ORDER BY `id` DESC")
     function show_bcc(){
         document.getElementById('bcc-p').style.display="block";
     }
-    //]]>
     </script>
                 <form method="get" action="">
                     <fieldset class="options">Purge non opted-in users:
