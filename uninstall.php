@@ -42,7 +42,7 @@ delete_option('wpfes_form_email');
 delete_option('wpfes_form_fields');
 delete_option('wpfes_form_send');
 
-delete_option('wpfes_link_credits_text');
+//delete_option('wpfes_link_credits_text');
 delete_option('wpfes_smtp_server');
 delete_option('wpfes_smtp_port');
 delete_option('wpfes_smtp_username');
