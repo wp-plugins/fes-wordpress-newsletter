@@ -91,6 +91,6 @@ if($terms_check){
 }
 
 $out .= '<p class="wpfes_form_label"><input type="submit" value="' . get_option('wpfes_form_send');
-$out .= '" class="wpfes_form_btn" /></p>' . "\n</form>\n<!-- Made by www.fastemailsender.com Newsletter Software Opt-in -->\n";
+$out .= '" class="wpfes_form_btn" /></p>' . "\n</form>\n<!-- Made by www.fastemailsender.com Newsletter Software -->\n";
 
 ?>
