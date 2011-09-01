@@ -132,7 +132,7 @@ add_or_update_option('wpfes_form_css', "
 
 #newsletter-agreement-text {
     width: 100%;
-    height: 365px;
+    height: 355px;
     overflow-y: scroll;
     clear: both;
 	padding:5px 0 10px 0;
