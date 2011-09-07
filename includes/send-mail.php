@@ -2,6 +2,8 @@
 
 function wpfes_send_email($from, $to, $subject, $body, $mode='local', $server='', $port='25', $user='', $pass=''){
 
+    $body=str_replace('#unsubscribe#', site_url().'?fes-unsubscribe='.$to, $body);
+
     if($mode=='local'){
         $headers =  "From: $from\r\n";
         $headers .= "MIME-Version: 1.0\r\n";

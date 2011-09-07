@@ -6,7 +6,8 @@ $terms_link = get_option("wpfes_terms_link");
 $terms_msg = get_option("wpfes_terms_msg");
 
 $wpfes_msg_bad = strip_tags(get_option("wpfes_msg_bad"));
-$out = '<form action="#wpfesw" method="post" onsubmit="return wpfes_check_form();">' . "\n";
+
+$out .= '<form action="#wpfesw" method="post" onsubmit="return wpfes_check_form();">' . "\n";
 $out .= '<p class="wpfes_form_label">' . get_option('wpfes_form_email');
 $out .= '<br /> <input type="text" name="wpfes_email" id="wpfes_email" class="wpfes_form_txt" /></p>' . "\n";
 if (is_array($wpfes_flds)) {
@@ -31,50 +32,10 @@ if (is_array($wpfes_flds)) {
         }
     }
 }
-$out .= '<script type="text/javascript">
-function wpfes_toggle_custom_fields (state) {
-    for (i=2; i<16; i++) {
-        if (obj = document.getElementById(\'wpfes_fld_\'+i)) {
-            obj.disabled = !state;
-            obj.readOnly = !state;
-        }
-    }
-}
-function wpfes_check_form(){
-    var showCheckbox=';
-    $out.=$terms_check ? '1' : '0';
-	
-$out.=';
-    if(document.getElementById("wpfes_email").value){
-        if(showCheckbox>0){
-            if(document.getElementById("wpfes_agree_terms").checked) {
-                return true;
-            } else {
-                alert("'.$terms_msg.'");
-                return false;
-            }
-        } else {
-            return true;
-        }
-    } else {
-        alert("'.$wpfes_msg_bad.'");
-        return false;
-    }
 
-}
-
-function change_newsletter_agreement_visibility(new_state){
-    document.getElementById("newsletter-agreement-box").style.display=new_state;
-}
-
-function newsletter_check_and_show_agreement() {
-    change_newsletter_agreement_visibility("block");
-    document.getElementById("wpfes_agree_terms").checked=true;
-}
-</script>';
-$out .= '<p class="wpfes_form_label"><input type="radio" name="wpfes_radio_option" id="wpfes_radio_option1" onclick="wpfes_toggle_custom_fields(1)" class="wpfes_form_radio" value="wpfes_radio_in" checked="checked" /> '.$wpfes_flds['wpfes_radio_in'];
+$out .= '<p class="wpfes_form_label"><input type="radio" name="wpfes_radio_option" id="wpfes_radio_option1" onclick="wpfes_toggle_custom_fields(1)" class="wpfes_form_radio" value="wpfes_radio_in" checked="checked" /> <label for="wpfes_radio_option1">'.$wpfes_flds['wpfes_radio_in'].'</label>';
 $out .= '<br/>';
-$out .= '<input type="radio" name="wpfes_radio_option" id="wpfes_radio_option2" onclick="wpfes_toggle_custom_fields(0)" class="wpfes_form_radio" value="wpfes_radio_out" /> '.$wpfes_flds['wpfes_radio_out'].'</p>';
+$out .= '<input type="radio" name="wpfes_radio_option" id="wpfes_radio_option2" onclick="wpfes_toggle_custom_fields(0)" class="wpfes_form_radio" value="wpfes_radio_out" /> <label for="wpfes_radio_option2">'.$wpfes_flds['wpfes_radio_out'].'</label></p>';
 
 if($terms_check){
     $out .= '
@@ -93,4 +54,12 @@ if($terms_check){
 $out .= '<p class="wpfes_form_label"><input type="submit" value="' . get_option('wpfes_form_send');
 $out .= '" class="wpfes_form_btn" /></p>' . "\n</form>\n<!-- Made by www.fastemailsender.com Newsletter Software -->\n";
 
+$add_link_lv = get_option("wpfes_link_credits");
+    $out .= '<h6 ';
+if ($add_link_lv) {
+} else {
+    $out .= 'class="wpfes_off"';
+}
+$out .= '>'.get_option('wpfes_link_credits_text').'</h6>';
+$out .= '</div>';
 ?>

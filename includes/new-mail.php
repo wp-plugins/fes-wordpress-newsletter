@@ -9,29 +9,7 @@ $email_from = stripslashes(get_option('wpfes_email_from'));
     $url = get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=' . $_GET['page'].'&wpfes-mode=list';
 if ($users = $wpdb->get_results("SELECT * FROM $table_users WHERE `msg_sent` = '1' ORDER BY `id` DESC")) {
 ?>
-<style type="text/css">
-#mail-table th {
-    text-align: left;
-    white-space: nowrap;
-}
-</style>
-<script type="text/javascript">
-    function UpdateSMTPRowVisibility(){
-        if(document.getElementById('servermode-local').checked){
-            document.getElementById('server-smtp-row').style.display='none';
-        } else {
-            document.getElementById('server-smtp-row').style.display='table-row';
-        }
-    }
 
-    function GetNewsletterServerMode(){
-         if(document.getElementById('servermode-local').checked){
-            return 'local';
-        } else {
-            return 'smtp';
-        }
-    }
-</script>
 <form action="#" name="new-mail-form" id="new-mail-form" method="post" enctype="multipart/form-data" onsubmit="return CheckFormAcceptable(this);">
 <table cellpadding="0" cellspacing="5" border="0" width="100%" id="mail-table">
     <tr>
@@ -72,7 +50,9 @@ if ($users = $wpdb->get_results("SELECT * FROM $table_users WHERE `msg_sent` = '
     </tr>
     <tr>
         <th>Message body:<br /><small>You may use HTML tags</small></th>
-        <td colspan="2"><textarea rows="10" cols="70" id="mail-body" name="mail-body"></textarea></td>
+        <td colspan="2"><textarea rows="10" cols="70" id="mail-body" name="mail-body"></textarea><br />
+            <p class="info-tip">To insert automatic unsubscribe link, include this text in your email: <code>#unsubscribe#</code></p>
+        </td>
     </tr>
     <tr>
         <td colspan="3"></td>
@@ -136,37 +116,7 @@ By default, CPanel hosted domains have a limitation of 250 emails per hour. If y
         wpfes_send_messages(max_index);
         return false;
     }
-    
-var ignore_error=0;
-
-function uncheckMasterAll(){
-    var allChecked=true;
-
-    var index=max_index;
-    while(index>=min_index){
-        if(document.getElementById('recipient'+index)){
-            if(document.getElementById('recipient'+index).checked){
-            } else {
-                allChecked=false;
-            }
-        }
-        index--;
-    }
-
-    document.getElementById('recipientsall').checked=allChecked;
-}
-
-function checkall(){
-    var chk=document.getElementById('recipientsall').checked;
-    var index=max_index;
-    while(index>=min_index){
-        if(document.getElementById('recipient'+index)){
-            document.getElementById('recipient'+index).checked=chk;
-        }
-        index--;
-    }
-
-}
+   
 
 
 function wpfes_send_messages(index) {
@@ -235,9 +185,4 @@ if(found) {
 }
 };
 
-function wpfes_check_sending_done(index){
-    if (index<=min_index) {
-        document.getElementById('sending').innerHTML='DONE';
-    }
-}
 </script>

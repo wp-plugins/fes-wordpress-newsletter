@@ -36,7 +36,11 @@ $wpfes_install_folder=basename(dirname(__FILE__));
 $wpfes_install_filename=basename(__FILE__);
 
 add_action('wp_ajax_send_mass_mail', 'send_mass_mail_callback');
+global $wpfes_window_message;
 
+
+//this file contains the functions and code.
+require_once(dirname(__FILE__).'/includes/opt-in.php');
 
 //////////////cpanel pear installation of Mail.php
 //$pear_path=dirname(__FILE__);
@@ -55,12 +59,19 @@ add_action('wp_ajax_send_mass_mail', 'send_mass_mail_callback');
 
 //require_once(dirname(__FILE__).'/includes/smtp-class.php');
 
-function wpfes_echo_message($msg){
-    echo '
-<script type="text/javascript">
-    wp_fes_newsletter_status_box_show(\''.$msg.'\');
-</script>';
-    
+function wpfes_echo_message($msg, $return = false){
+global $wpfes_window_message;
+//    $ret = '
+//<script type="text/javascript">
+//    wp_fes_newsletter_status_box_show(\''.$msg.'\');
+//</script>';
+//    if($return){
+//        return $ret;
+//    } else {
+//        echo($ret);
+//    }
+    $wpfes_window_message=$msg;
+    return  '';
 }
 
 function send_mass_mail_callback() {
@@ -72,7 +83,7 @@ function send_mass_mail_callback() {
 }
 
 function wpfes_show_form($rtn = 0) {	
-	require_once(dirname(__FILE__).'/includes/subs-form.php');
+	require(dirname(__FILE__).'/includes/subs-form.php');
 	if ($rtn) {
 		return $out;
 	}
@@ -110,9 +121,6 @@ function wpfes_getip() {
 function wpfes_has_email_headers($text) {
    return preg_match("/(%0A|%0D|\n+|\r+)(content-type:|to:|cc:|bcc:)/i", $text);
 }
-
-//this file contains the functions and code.
-require_once(dirname(__FILE__).'/includes/opt-in.php');
 
 function wpfes_install() {
 	global $wpdb;
@@ -176,7 +184,7 @@ function wpfes_widget_init() {
 			$title = stripslashes($_POST['wpfes_widget_title']);
 			update_option('wpfes_widget_title', $title );
 		}
-		echo '<p>Title:<input  style="width: 200px;" type="text" value="';
+		echo '<p>Title:<input type="text" value="';
 		echo $title . '" name="wpfes_widget_title" id="wpfes_widget_title" /></p>';
 		echo '<input type="hidden" id="wpfes_submit" name="wpfes_submit" value="1" />';
 	}
@@ -203,7 +211,7 @@ function wpfes_widget_init() {
 
 function wpfes_add_to_menu() {
 	add_options_page('WP Fast Email Sender Opt-in Options', 'Newsletter Plugin', 7, __FILE__, 'wpfes_options' );
-
+        //wpfes_header();
 	add_filter('plugin_action_links', 'wpfes_filter_plugin_actions_links', 10, 2);//ET
 }
 
@@ -217,16 +225,32 @@ function wpfes_filter_plugin_actions_links($links, $file) 	{
 	return $links;
 }
 
-function wpfes_insert ($cnt) {
-	 global $wpfes_ob;
-	 $cnt = str_replace("<!--wpfes-opt-in-->", $wpfes_ob, $cnt);
-	 return $cnt;
-}
+//function wpfes_insert ($cnt) {
+//	 global $wpfes_ob;
+//	 $cnt = str_replace("<!--wpfes-opt-in-->", $wpfes_ob, $cnt);
+//	 return $cnt;
+//}
 
 function wpfes_opt_in_form_func( $atts ) {
-	return wpfes_show_form(true);
+        return wpfes_opt_in(true );
+	//$ret= wpfes_show_form(true);
+        
 }
-add_shortcode( 'wpfes_opt_in_form', 'wpfes_opt_in_form_func' );
+
+function wpfes_headerpublic(){
+    echo('<script type="text/javascript" src="'.site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/js.php"></script>');
+    echo('<link rel="stylesheet" type="text/css" href="'.site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/formcss.php" />');
+}
+function wpfes_headeradmin(){
+    wpfes_headerpublic();//normal JS
+    echo('<link rel="stylesheet" type="text/css" href="'.site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/admin.css" />');
+}
+
+
+add_action('wp_head', 'wpfes_headerpublic');//only works on public
+add_action('admin_head', 'wpfes_headeradmin');//only works on admin
+
+add_shortcode('wpfes_opt_in_form', 'wpfes_opt_in_form_func');
 
 register_activation_hook(__FILE__, 'wpfes_install');
 add_action('admin_menu', 'wpfes_add_to_menu');

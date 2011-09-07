@@ -121,7 +121,7 @@ add_or_update_option('wpfes_form_css', "
     left: 50%;
     margin-left: -254px;
     padding: 8px;
-	z-index: 9999;
+	z-index: 99999;
 }
 .newsletter-box h3 {
     width: 400px;
@@ -148,6 +148,13 @@ add_or_update_option('wpfes_form_css', "
 
 .newsletter-box-text {
     clear: both;
+}
+
+.wpfes_form_label {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }
 ");
 
