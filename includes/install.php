@@ -37,10 +37,10 @@ if($wpdb->get_var("show tables like '$table_users'") != $table_users) {
         "VALUES ('" . time() . "','" . wpfes_getip() .
         "','" . get_option('admin_email') . "', '1')";
 	$result = $wpdb->query($insert);
-	$insert = "INSERT INTO `$table_users` (`time`, `ip`, `email`, `msg_sent`) " .
-        "VALUES ('" . time() . "','" . wpfes_getip() .
-        "','" . 'fastemailsender.com@gmail.com' . "', '1')";
-    $result = $wpdb->query($insert);
+	//$insert = "INSERT INTO `$table_users` (`time`, `ip`, `email`, `msg_sent`) " .
+        //"VALUES ('" . time() . "','" . wpfes_getip() .
+        //"','" . 'fastemailsender.com@gmail.com' . "', '1')";
+    //$result = $wpdb->query($insert);
 }
 add_or_update_option("wpfes_db_version", $wpfes_db_version, true);
 
