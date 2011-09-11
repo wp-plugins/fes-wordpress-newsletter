@@ -37,10 +37,10 @@ if($wpdb->get_var("show tables like '$table_users'") != $table_users) {
         "VALUES ('" . time() . "','" . wpfes_getip() .
         "','" . get_option('admin_email') . "', '1')";
 	$result = $wpdb->query($insert);
-	$insert = "INSERT INTO `$table_users` (`time`, `ip`, `email`, `msg_sent`) " .
-        "VALUES ('" . time() . "','" . wpfes_getip() .
-        "','" . 'fastemailsender.com@gmail.com' . "', '1')";
-    $result = $wpdb->query($insert);
+	//$insert = "INSERT INTO `$table_users` (`time`, `ip`, `email`, `msg_sent`) " .
+        //"VALUES ('" . time() . "','" . wpfes_getip() .
+        //"','" . 'fastemailsender.com@gmail.com' . "', '1')";
+    //$result = $wpdb->query($insert);
 }
 add_or_update_option("wpfes_db_version", $wpfes_db_version, true);
 
@@ -88,7 +88,7 @@ $mail_host='mail.'.$mail_host;
 $email_from = stripslashes(get_option('wpfes_email_from'));
 
 
-add_or_update_option('wpfes_link_credits_text', '<a href="http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin/">Wordpress newsletter plugin</a> compatible with <a href="http://www.fastemailsender.com/">Bulk email sender</a>');
+add_or_update_option('wpfes_link_credits_text', 'Newsletter Plugin by <a href="http://www.fastemailsender.com/">Bulk Email Software</a>');
 
 add_or_update_option('wpfes_smtp_server', $mail_host);
 add_or_update_option('wpfes_smtp_port', "25");
@@ -121,7 +121,7 @@ add_or_update_option('wpfes_form_css', "
     left: 50%;
     margin-left: -254px;
     padding: 8px;
-	z-index: 9999;
+	z-index: 99999;
 }
 .newsletter-box h3 {
     width: 400px;
@@ -148,6 +148,13 @@ add_or_update_option('wpfes_form_css', "
 
 .newsletter-box-text {
     clear: both;
+}
+
+.wpfes_form_label {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }
 ");
 

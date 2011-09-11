@@ -1,51 +1,66 @@
 <?php
+global $wpfes_window_message;
+$wpfes_window_message='';
 
-function wpfes_opt_in() {
-	global $wpdb;
-	$table_users = $wpdb->prefix . "wpfes_users";
-        $form_css = get_option("wpfes_form_css");
-    echo '<div id="wpfes_newsletter">
+$_POST['wpfes_email'] = trim($_POST['wpfes_email']);
+if (empty($_POST['wpfes_email'])) {
+    if (!empty($_GET['wpfes_d']) && !empty($_GET['wpfes_s'])) {
+        //execute the double opt-in, and show message.
+        wpfes_dbl_optin_confirm(true);
+    }
+}
+
+function wpfes_opt_in_code_message_box(){
+    echo('<div id="wpfes_newsletter">
 <div id="wpfes_newsletter_message_box" class="widget-container newsletter-box" style="display: none; height: auto;">
     <h3 class="widget-title">Newsletter subscription status</h3>
     <div class="newsletter-box-text" id="wpfes_newsletter_message"></div>
     <input type="button" onclick="wpfes_newsletter_message_close()" value="OK" />
 </div>
-<script type="text/javascript">
-    function wp_fes_newsletter_status_box_show(boxText){
-    document.getElementById("wpfes_newsletter_message").innerHTML=boxText;
-    document.getElementById("wpfes_newsletter_message_box").style.display="block";
-}
-function wpfes_newsletter_message_close(){
-    document.getElementById("wpfes_newsletter_message_box").style.display="none";
-}
-</script>
-<style type="text/css">
-'.$form_css.'
-</style>
-';
 
+');
+}
+function wpfes_opt_in_show_message_box(){
+global $wpfes_window_message;
+if(strlen($wpfes_window_message)>0){
+
+    echo('
+<script type="text/javascript">
+    wp_fes_newsletter_status_box_show(\''.$wpfes_window_message.'\');
+</script>');
+}
+}
+
+add_action('wp_head', 'wpfes_opt_in_code_message_box');//adds the DIVS to show later
+add_action('wp_footer', 'wpfes_opt_in_show_message_box');//pushes the JS to show the divs.
+
+function wpfes_opt_in($return_text = false) {
+	global $wpdb;
+
+        //$myret='';
+	$table_users = $wpdb->prefix . "wpfes_users";
+        //$form_css = get_option("wpfes_form_css");
+
+    $myret = '';
 
     $hh= stripslashes(get_option('wpfes_form_header'));
     if(strlen($hh)>0){
-        echo('<p>'.$hh.'</p>');
+        $myret.=('<p>'.$hh.'</p>');
     }
 
-    $_POST['wpfes_email'] = trim($_POST['wpfes_email']);
+
     if (empty($_POST['wpfes_email'])) {
-        if (!empty($_GET['wpfes_d']) && !empty($_GET['wpfes_s'])) {
-            wpfes_dbl_optin_confirm();
-        }
-        else {
-            wpfes_show_form();
-        }
-    } 
+        //the form is always shown
+            //$myret.=wpfes_show_form(true);
+
+    }
     else {
         $email = stripslashes($_POST['wpfes_email']);
         $wpfes_custom_flds = "";
         $wpfes_custom_flds_mail = "";
         if (!preg_match("/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/", $email)) {
-            wpfes_echo_message(stripslashes(get_option('wpfes_msg_bad')));
-            wpfes_show_form();
+            $myret.=wpfes_echo_message(stripslashes(get_option('wpfes_msg_bad')), true);
+            //$myret.=wpfes_show_form(true);
         }
         else {
             if ($_POST['wpfes_radio_option'] && $_POST['wpfes_radio_option'] == "wpfes_radio_out") {
@@ -55,19 +70,19 @@ function wpfes_newsletter_message_close(){
                 $headers .= "From: $email\n";
                 $headers .= "Content-Type: text/plain; charset=\"" . get_settings('blog_charset') . "\"\n";
                 if (mail($manager_email, "Unsubscribe", $email, $headers)) {
-                        wpfes_echo_message( stripslashes($wpfes_flds['wpfes_unsubscr_success']));
+                        $myret.=wpfes_echo_message( stripslashes($wpfes_flds['wpfes_unsubscr_success']), true);
                         // Delete user from database
                         $delete = "DELETE FROM " . $table_users . "
                             WHERE email= '$email'";
                         $result = $wpdb->query($delete);
                 } else {
-                        wpfes_echo_message( stripslashes(get_option('wpfes_msg_fail')));
+                        $myret.=wpfes_echo_message( stripslashes(get_option('wpfes_msg_fail')), true);
                 }
             } else {
                 $wpfes_double_optin = get_option('wpfes_double_optin');
                 $wpfes_auto_delete = get_option('wpfes_auto_delete');
                 if (!empty($_POST['wpfes_fld'])) {
-                    
+
                     foreach ($_POST['wpfes_fld'] as $wpfes_k => $wpfes_v) {
                         if (ereg("^[ ]*([^\t\r\n\\]{1,64}[^ ])[ ]*$", stripslashes($wpfes_v), $wpfes_r)) {
                             $wpfes_custom_flds .= "#".$wpfes_k."#: ".$wpfes_r[1]."\n";
@@ -98,14 +113,14 @@ function wpfes_newsletter_message_close(){
                 }
                 $selectqry = "SELECT * FROM " . $table_users . " WHERE `email` = '" . $email ."'";
                 if ($wpdb->query($selectqry)) {
-                    wpfes_echo_message( stripslashes(get_option('wpfes_msg_dbl')));
+                    $myret.=wpfes_echo_message( stripslashes(get_option('wpfes_msg_dbl')), true);
                 }
                 else {
                     if (mail($email,$subject,$message,$headers)) {
                         if ($wpfes_double_optin || !$wpfes_auto_delete) {
                             // Write new user to database
-                            $insert = "INSERT INTO " . $table_users . " 
-                                (time, ip, email, msg_sent, custom_data) 
+                            $insert = "INSERT INTO " . $table_users . "
+                                (time, ip, email, msg_sent, custom_data)
                                 VALUES (
                                 '" . $wpfes_time . "',
                                 '" . $wpfes_ip . "',
@@ -114,6 +129,7 @@ function wpfes_newsletter_message_close(){
                                 '" . $wpfes_custom_flds . "'
                                 )";
                             $result = $wpdb->query($insert);
+                            //$myret.=wpfes_echo_message($insert, true);
                         }
                         if (!$wpfes_double_optin) { //send message to admin, to add to the subscription list in dedicated software
                             $headers = "MIME-Version: 1.0\n";
@@ -121,28 +137,28 @@ function wpfes_newsletter_message_close(){
                             $headers .= "Content-Type: text/plain; charset=\"" . get_settings('blog_charset') . "\"\n";
                             mail($email_from, "Subscribe", $wpfes_custom_flds_mail, $headers);
                         }
-                        wpfes_echo_message( stripslashes(get_option('wpfes_msg_sent')));
+                            $myret.=wpfes_echo_message( stripslashes(get_option('wpfes_msg_sent')), true);
                     } else {
-                        wpfes_echo_message( stripslashes(get_option('wpfes_msg_fail')));
+                        $myret.=wpfes_echo_message( stripslashes(get_option('wpfes_msg_fail')), true);
                     }
                 }
             }
         }
     }
-    echo '<p>'.stripslashes(get_option('wpfes_form_footer')).'</p>';
-    $add_link_lv = get_option("wpfes_link_credits");
-    $out .= '<h6 ';
-if ($add_link_lv) {
-} else {
-    $out .= 'class="wpfes_off"';
-}
-$out .= '>'.get_option('wpfes_link_credits_text').'</h6>';
-    echo $out;
-	echo '</div>';
+    $myret.=wpfes_show_form(true);
+    $myret.='<p>'.stripslashes(get_option('wpfes_form_footer')).'</p>';
+
+   // echo $out;
+   if($return_text){
+       return $myret;
+   } else {
+       echo($myret);
+   }
 }
 
-function wpfes_dbl_optin_confirm() {
+function wpfes_dbl_optin_confirm($return_text = false) {
 	global $wpdb;
+        $myret='';
 	$table_users = $wpdb->prefix . "wpfes_users";
 	$email = stripslashes(get_option('wpfes_email_from'));
 	$wpfes_auto_delete = get_option('wpfes_auto_delete');
@@ -153,7 +169,7 @@ function wpfes_dbl_optin_confirm() {
 		$headers = "MIME-Version: 1.0\n";
 		$headers .= "From: ". $record->email."\n";
 		$headers .= "Content-Type: text/plain; charset=\"" . get_settings('blog_charset') . "\"\n";
-                
+
                 $fields=$record->custom_data;
                 $wpfes_flds = (get_option('wpfes_form_fields'));
                 $i=0;
@@ -166,7 +182,7 @@ function wpfes_dbl_optin_confirm() {
                     $fields=str_replace('#'.$i.'#', $xkey, $fields);
                 }
                 $fields=str_replace('::', ':', $fields); //just in case
-                
+
 		if (mail($email, stripslashes(get_option('wpfes_email_subject'))." - New subscriber", $fields, $headers)) {
 			if ($wpfes_auto_delete) {
 				$update = "DELETE FROM `$table_users` WHERE `id` = ". $record->id;
@@ -175,15 +191,38 @@ function wpfes_dbl_optin_confirm() {
 				$update = "UPDATE `$table_users` SET `msg_sent` = '1' WHERE `id` = ". $record->id;
 			}
 			$res = $wpdb->query($update);
-			wpfes_echo_message( stripslashes(get_option('wpfes_dbl_sent')));
+			$myret .= wpfes_echo_message( stripslashes(get_option('wpfes_dbl_sent')), true);
 		}
 		else {
-			wpfes_echo_message( stripslashes(get_option('wpfes_msg_fail')));
+			$myret .= wpfes_echo_message( stripslashes(get_option('wpfes_msg_fail')), true);
 		}
 	}
 	else {
-		wpfes_echo_message( stripslashes(get_option('wpfes_dbl_fail')));
+		$myret .= wpfes_echo_message( stripslashes(get_option('wpfes_dbl_fail')), true);
 	}
+        if($return_text){
+            return $myret;
+        } else {
+            echo($myret);
+        }
 }
 
+global $wpdb;
+$table_users = $wpdb->prefix . "wpfes_users";
+/////////unsubscribe link in emails ////
+if(strlen($_GET['fes-unsubscribe'])>0){
+    $delete = "DELETE FROM " . $table_users . " WHERE email= '".$_GET['fes-unsubscribe']."'";
+    //echo('<!--'.$delete.'-->');
+    $result = $wpdb->query($delete);
+
+    add_action('wp_footer', 'wpfes_show_unsubscribe');
+}
+
+function wpfes_show_unsubscribe(){
+
+    $wpfes_flds = (get_option('wpfes_form_fields'));
+    wpfes_echo_message( stripslashes($wpfes_flds['wpfes_unsubscr_success']).'<br />'.$_GET['fes-unsubscribe']);
+}
+
+//////////////////////////////////////
 ?>

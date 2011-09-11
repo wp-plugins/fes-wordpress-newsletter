@@ -1,6 +1,6 @@
 <?php
         
-if(strpos($_SERVER['HTTP_REFERER'],'wp-admin/options-general.php?page=fes-wordpress/newsletter/wpfes-opt-in.php')){
+if(strpos($_SERVER['HTTP_REFERER'],'wp-admin/options-general.php?page=fes-wordpress-newsletter/wpfes-opt-in.php')){
     header("Content-Type: application/csv");
     header("Content-Disposition: attachment; filename=subscriptions.csv");
 
