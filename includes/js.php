@@ -1,4 +1,5 @@
 <?php
+//die;
 header("Content-type: text/javascript");
 header('Content-Disposition: attachment; filename="wp_fes.js"');
     require_once('../../../../wp-load.php');

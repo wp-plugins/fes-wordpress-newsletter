@@ -1,8 +1,13 @@
 <?php
 global $wpfes_window_message;
 $wpfes_window_message='';
+//if (isset($_POST['wpfes_email']))  {
+//    $_POST['wpfes_email'] = trim($_POST['wpfes_email']);
+////} else {
+////    $_POST['wpfes_email'] = '';
+//}
 
-$_POST['wpfes_email'] = trim($_POST['wpfes_email']);
+
 if (empty($_POST['wpfes_email'])) {
     if (!empty($_GET['wpfes_d']) && !empty($_GET['wpfes_s'])) {
         //execute the double opt-in, and show message.
@@ -11,7 +16,7 @@ if (empty($_POST['wpfes_email'])) {
 }
 
 function wpfes_opt_in_code_message_box(){
-    echo('<div id="wpfes_newsletter">
+    echo('
 <div id="wpfes_newsletter_message_box" class="widget-container newsletter-box" style="display: none; height: auto;">
     <h3 class="widget-title">Newsletter subscription status</h3>
     <div class="newsletter-box-text" id="wpfes_newsletter_message"></div>
@@ -21,14 +26,14 @@ function wpfes_opt_in_code_message_box(){
 ');
 }
 function wpfes_opt_in_show_message_box(){
-global $wpfes_window_message;
-if(strlen($wpfes_window_message)>0){
+    global $wpfes_window_message;
+    if(strlen($wpfes_window_message)>0){
 
     echo('
 <script type="text/javascript">
     wp_fes_newsletter_status_box_show(\''.$wpfes_window_message.'\');
 </script>');
-}
+    }
 }
 
 add_action('wp_head', 'wpfes_opt_in_code_message_box');//adds the DIVS to show later
@@ -49,13 +54,9 @@ function wpfes_opt_in($return_text = false) {
     }
 
 
-    if (empty($_POST['wpfes_email'])) {
-        //the form is always shown
-            //$myret.=wpfes_show_form(true);
-
-    }
-    else {
-        $email = stripslashes($_POST['wpfes_email']);
+    if (!empty($_POST['wpfes_email'])) {
+   
+        $email = stripslashes(trim($_POST['wpfes_email']));
         $wpfes_custom_flds = "";
         $wpfes_custom_flds_mail = "";
         if (!preg_match("/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/", $email)) {
@@ -210,7 +211,7 @@ function wpfes_dbl_optin_confirm($return_text = false) {
 global $wpdb;
 $table_users = $wpdb->prefix . "wpfes_users";
 /////////unsubscribe link in emails ////
-if(strlen($_GET['fes-unsubscribe'])>0){
+if(isset($_GET['fes-unsubscribe'])){
     $delete = "DELETE FROM " . $table_users . " WHERE email= '".$_GET['fes-unsubscribe']."'";
     //echo('<!--'.$delete.'-->');
     $result = $wpdb->query($delete);

@@ -1,8 +1,8 @@
 <?php
 
-if( !defined( 'ABSPATH') && !defined('WP_UNINSTALL_PLUGIN') )
+if( !defined( 'ABSPATH') && !defined('WP_UNINSTALL_PLUGIN') ) {
     exit();
-
+} else {
 global $wpdb;
 $table_users = $wpdb->prefix . "wpfes_users";
 
@@ -50,5 +50,5 @@ delete_option('wpfes_smtp_password');
 
 delete_option('wpfes_form_css');
 
-
+}
 ?>

@@ -7,7 +7,7 @@ $terms_msg = get_option("wpfes_terms_msg");
 
 $wpfes_msg_bad = strip_tags(get_option("wpfes_msg_bad"));
 
-$out .= '<form action="#wpfesw" method="post" onsubmit="return wpfes_check_form();">' . "\n";
+$out .= '<div id="wpfes_newsletter"><form action="#wpfesw" method="post" onsubmit="return wpfes_check_form();">' . "\n";
 $out .= '<p class="wpfes_form_label">' . get_option('wpfes_form_email');
 $out .= '<br /> <input type="text" name="wpfes_email" id="wpfes_email" class="wpfes_form_txt" /></p>' . "\n";
 if (is_array($wpfes_flds)) {

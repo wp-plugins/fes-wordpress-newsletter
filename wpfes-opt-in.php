@@ -238,40 +238,45 @@ function wpfes_opt_in_form_func( $atts ) {
 }
 
 function wpfes_headerpublic(){
-    echo('<script type="text/javascript" src="'.site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/js.php"></script>');
-    echo('<link rel="stylesheet" type="text/css" href="'.site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/formcss.php" />');
+    $link=site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/js.php';
+    $link=wp_nonce_url($link, 'wpfes_headerpublic_nonce');
+    echo('<script type="text/javascript" src="'.$link.'"></script>');
+
+    $link=site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/formcss.php';
+    $link=wp_nonce_url($link, 'wpfes_headerpublic_nonce');
+
+    echo('<link rel="stylesheet" type="text/css" href="'.$link.'" />');
 }
 function wpfes_headeradmin(){
     wpfes_headerpublic();//normal JS
     echo('<link rel="stylesheet" type="text/css" href="'.site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/admin.css" />');
 }
 
-
+//////if(get_admin_url
 add_action('wp_head', 'wpfes_headerpublic');//only works on public
 add_action('admin_head', 'wpfes_headeradmin');//only works on admin
 
 add_shortcode('wpfes_opt_in_form', 'wpfes_opt_in_form_func');
 
 register_activation_hook(__FILE__, 'wpfes_install');
-register_activation_hook(__FILE__, 'activate');
-register_deactivation_hook(__FILE__, 'deactivate');
+register_activation_hook(__FILE__, 'wpfes_activate');
+register_deactivation_hook(__FILE__, 'wpfes_deactivate');
 add_action('admin_menu', 'wpfes_add_to_menu');
 add_action('init', 'wpfes_widget_init');
 
-function activate() {
-session_start();
-$subj = "Newsletter Plugin Activated";
-$msg = get_option('siteurl');
-$from = get_option('admin_email');
-$headers = "From: ".get_option('admin_email');
-mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
-    }
-function deactivate() {
-session_start();
-$subj = "Newsletter Plugin Deactivated";
-$msg = get_option('siteurl');
-$headers = "From: ".get_option('admin_email');
-mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
-    }
+function wpfes_activate() {
+    $subj = "Newsletter Plugin Activated";
+    $msg = get_option('siteurl');
+    $from = get_option('admin_email');
+    $headers = "From: ".$from;
+    mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
+}
+function wpfes_deactivate() {
+    $subj = "Newsletter Plugin Deactivated";
+    $msg = get_option('siteurl');
+    $from = get_option('admin_email');
+    $headers = "From: ".$from;
+    mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
+}
 
 ?>
