@@ -4,7 +4,7 @@
 Plugin Name: Newsletter Plugin
 Plugin URI: http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin/
 Description: Designed with speed in mind, this FREE plugin enables any website/blog to store a list of newsletter subscriptions. You can store custom fields, like gender, country or job department, and send emails to your subscribers straight from your website's admin interface. The subscribers list can also be downloaded as a CSV file, compatible with most newsletter software programs. The plugin features a double-opt-in process, so visitors can only register themselves, and a newsletter-agreement box, to keep complaints about spamming to a minimum. To make it easier for you to use the plugin, there is a Custom CSS field, so you don't have to change any files in your theme.
-Version: 1.0.0
+Version: 2.0.0
 Author: Fast Email Sender Team
 Author URI: http://www.fastemailsender.com/
 */
