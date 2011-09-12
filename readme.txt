@@ -52,6 +52,14 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 4. Admin panel of plugin where you can manage subscribed users and export list
 5. Admin panel of plugin where you can send newsletters Plain/HTML format with LOCAL SERVER or SMTP delivery method.
 
+== Changelog ==
+
+= 2.0.0 =
+* Fixes conflict with add featured image or add image interface, edit page or post
+* Improves build newsletter form HTML
+* Fixes conflict between display with shortcode method and widget
+* Outsourcing javascript and css
+* Unsubscribe tag available for body newsletter.
 
 == Installation ==
 
