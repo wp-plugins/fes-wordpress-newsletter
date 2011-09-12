@@ -46,20 +46,11 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 
 == Screenshots ==
 
-1. Newsletter subscription form your WordPress sidebar displayed in public interface
-2. Newsletter agreement window
-3. Admin panel of plugin where you can administrate options and change view
-4. Admin panel of plugin where you can manage subscribed users and export list
+1. Newsletter subscription form your WordPress sidebar displayed in public interface.
+2. Newsletter agreement window.
+3. Admin panel of plugin where you can administrate options and change view.
+4. Admin panel of plugin where you can manage subscribed users and export list.
 5. Admin panel of plugin where you can send newsletters Plain/HTML format with LOCAL SERVER or SMTP delivery method.
-
-== Changelog ==
-
-= 2.0.0 =
-* Fixes conflict with add featured image or add image interface, edit page or post
-* Improves build newsletter form HTML
-* Fixes conflict between display with shortcode method and widget
-* Outsourcing javascript and css
-* Unsubscribe tag available for body newsletter.
 
 == Installation ==
 
@@ -102,3 +93,11 @@ If you want to insert the plugin in any template use this code: `<?php wpfes_opt
 
 Yes. If you wish to don't want to display anymore developer credit links uncheck box from 'Settings > Newsletter Plugin > Options'.
 
+== Changelog ==
+
+= 2.0.0 =
+* Fixes conflict with add featured image or add image interface, edit page or post.
+* Improves build newsletter form HTML.
+* Fixes conflict between display with shortcode method and widget.
+* Outsourcing javascript and css.
+* Unsubscribe tag available for body newsletter.
