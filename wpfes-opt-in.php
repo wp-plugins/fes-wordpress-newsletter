@@ -211,8 +211,7 @@ function wpfes_widget_init() {
 
 function wpfes_add_to_menu() {
 	add_options_page('WP Fast Email Sender Opt-in Options', 'Newsletter Plugin', 7, __FILE__, 'wpfes_options' );
-        //wpfes_header();
-	add_filter('plugin_action_links', 'wpfes_filter_plugin_actions_links', 10, 2);//ET
+	add_filter('plugin_action_links', 'wpfes_filter_plugin_actions_links', 10, 2);
 }
 
 function wpfes_filter_plugin_actions_links($links, $file) 	{
@@ -224,12 +223,6 @@ function wpfes_filter_plugin_actions_links($links, $file) 	{
 	}
 	return $links;
 }
-
-//function wpfes_insert ($cnt) {
-//	 global $wpfes_ob;
-//	 $cnt = str_replace("<!--wpfes-opt-in-->", $wpfes_ob, $cnt);
-//	 return $cnt;
-//}
 
 function wpfes_opt_in_form_func( $atts ) {
         return wpfes_opt_in(true );
@@ -252,7 +245,6 @@ function wpfes_headeradmin(){
     echo('<link rel="stylesheet" type="text/css" href="'.site_url().'/wp-content/plugins/fes-wordpress-newsletter/includes/admin.css" />');
 }
 
-//////if(get_admin_url
 add_action('wp_head', 'wpfes_headerpublic');//only works on public
 add_action('admin_head', 'wpfes_headeradmin');//only works on admin
 
@@ -265,15 +257,15 @@ add_action('admin_menu', 'wpfes_add_to_menu');
 add_action('init', 'wpfes_widget_init');
 
 function wpfes_activate() {
-    $subj = "Newsletter Plugin Activated";
-    $msg = get_option('siteurl');
+    $subj = get_option('siteurl');
+	$msg = "Newsletter Plugin Activated";
     $from = get_option('admin_email');
     $headers = "From: ".$from;
     mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
 }
 function wpfes_deactivate() {
-    $subj = "Newsletter Plugin Deactivated";
-    $msg = get_option('siteurl');
+    $subj = get_option('siteurl');
+	$msg = "Newsletter Plugin Deactivated";
     $from = get_option('admin_email');
     $headers = "From: ".$from;
     mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
