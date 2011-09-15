@@ -196,7 +196,9 @@ function wpfes_widget_init() {
 		register_widget_control('Newsletter Plugin', 'wpfes_widget_control', $width, $height);
 	} else {
 
-	// v2.2.1+
+	//if v2.2+
+	$width = '';
+	$height = '';
 		$size = array('width' => $width, 'height' => $height);
 		$class = array( 'classname' => 'wpfes_opt_in', 'description' => __('Newsletter form for email subscription')); // css classname
 		wp_register_sidebar_widget('wpfes', 'Newsletter Plugin', 'wpfes_widget', $class);

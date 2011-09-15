@@ -1,7 +1,7 @@
 === Newsletter Plugin ===
 Contributors: fesoftware
 Donate link: http://www.fastemailsender.com/plugins/wordpress-newsletter-plugin
-Tags: newsletter, newsletter subscription, send newsletter, newsletter plugin, newsletter widget, email newsletter, newsletter subscribe, email subscribe, newsletter sign-up, newsletter signnup, sidebar
+Tags: newsletter, newsletter subscription, send newsletter, newsletter plugin, newsletter widget, email newsletter, newsletter subscribe, email subscribe, newsletter sign-up, sidebar, mass mailing, mass mailer
 Requires at least: 2.0.0
 Tested up to: 3.2.1
 Stable tag: 2.0.0
@@ -25,6 +25,7 @@ This **FREE plugin** enables any website/blog to store a list of newsletter subs
 * Downloadable subscribers list (CSV)
 * Send mass email to all subscribers, from the admin interface of your site/blog
 * Mass emails can be send from local server, or from a dedicated SMTP server
+* Unsubscribe shorcode can be inserted in newsletter body
 
 = Highlight Features =
 

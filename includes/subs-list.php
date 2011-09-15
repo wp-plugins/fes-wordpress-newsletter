@@ -7,7 +7,8 @@ $csv_url=get_bloginfo('wpurl').'/wp-content/plugins/'.basename(dirname(dirname(_
 
 
 ?>
-<h3>Online opted-in users backup</h3>
+<div id="admin_wpfes">
+<h3 class="wpfestitle">Online opted-in users backup</h3>
 <p class="info-tip">You can keep the entire subscriptions list online, or you can download the list as CSV file and use it with <a href="http://www.fastemailsender.com/" target="_blank">Fast Email Sender</a> software.
 </p>
 <?php
@@ -105,3 +106,4 @@ if ($users = $wpdb->get_results("SELECT * FROM $table_users ORDER BY `id` DESC")
 }
 ?>
 <p class="info-tip">It is not recommended to keep a list longer than 500 subscriptions online.</p>
+</div>

@@ -70,13 +70,14 @@ add_or_update_option('wpfes_dbl_sent', "Subscription confirmed. Thank you.");
 
 add_or_update_option('wpfes_form_header', "Subscribe to our newsletter");
 add_or_update_option('wpfes_form_footer', "");
-add_or_update_option('wpfes_form_email', "E-mail:");
+add_or_update_option('wpfes_form_email', "E-mail");
 //add_option('wpfes_form_fields', "");
 add_or_update_option('wpfes_form_fields', array("wpfes_radio_in"=>"Subscribe",
                                                 "wpfes_radio_out"=>"Unsubscribe",
-                                                "wpfes_unsubscr_success"=>"Your email address has been unsubscribed.",
-                                                2=>"Name:"));
-add_or_update_option('wpfes_form_send', "Submit");
+                                                "wpfes_unsubscr_success"=>"Your email address has been unsubscribed."
+                                                //2=>"Name:"));
+));
+add_or_update_option('wpfes_form_send', "Subscribe");
         
 $mail_host=$_SERVER['HTTP_HOST'];
 $mail_host=strtolower($mail_host);
@@ -124,10 +125,18 @@ add_or_update_option('wpfes_form_css', "
 	z-index: 99999;
 }
 .newsletter-box h3 {
-    width: 400px;
+	background:none;
+	color:#000;
     float: left;
     clear: left;
-	margin:0 0 5px 0;
+	margin:0 0 10px 0;
+	padding:0;
+	font-size:16px;
+	height:16px;
+	line-height:16px;
+	font-family:arial;
+	text-decoration:none;
+	text-shadow:none;
 }
 
 #newsletter-agreement-text {
