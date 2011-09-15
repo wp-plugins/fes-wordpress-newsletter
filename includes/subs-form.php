@@ -6,10 +6,9 @@ $terms_link = get_option("wpfes_terms_link");
 $terms_msg = get_option("wpfes_terms_msg");
 
 $wpfes_msg_bad = strip_tags(get_option("wpfes_msg_bad"));
-
+$wpfes_from_email = get_option('wpfes_form_email');
 $out .= '<div id="wpfes_newsletter"><form action="#wpfesw" method="post" onsubmit="return wpfes_check_form();">' . "\n";
-$out .= '<p class="wpfes_form_label">' . get_option('wpfes_form_email');
-$out .= '<br /> <input type="text" name="wpfes_email" id="wpfes_email" class="wpfes_form_txt" /></p>' . "\n";
+$out .= '<p class="wpfes_form_label"><input type="text" name="wpfes_email" id="wpfes_email" class="wpfes_form_txt" onblur="if (this.value==\'\') this.value=this.defaultValue" onclick="if (this.defaultValue==this.value) this.value=\'\'" value="'.$wpfes_from_email.'" /></p>' . "\n";
 if (is_array($wpfes_flds)) {
     foreach ($wpfes_flds as $wpfes_k => $wpfes_v) {
         if (is_numeric($wpfes_k) && $wpfes_v) {
@@ -26,14 +25,13 @@ if (is_array($wpfes_flds)) {
                 }
                 echo('</p>');
             } else { //normal text box
-                $out .= '<p class="wpfes_form_label">' . $wpfes_v.'<br />';
-                $out .= ' <input type="text" name="wpfes_fld['. $wpfes_k .']" id="wpfes_fld_'. $wpfes_k .'"  maxlength="64" class="wpfes_form_txt" /></p>' . "\n";
+                $out .= '<p class="wpfes_form_label"><input type="text" name="wpfes_fld['. $wpfes_k .']" id="wpfes_fld_'. $wpfes_k .'"  maxlength="64" class="wpfes_form_txt"onblur="if (this.value==\'\') this.value=this.defaultValue" onclick="if (this.defaultValue==this.value) this.value=\'\'" value="'.$wpfes_v.'" /></p>' . "\n";
             }
         }
     }
 }
 
-$out .= '<p class="wpfes_form_label"><input type="radio" name="wpfes_radio_option" id="wpfes_radio_option1" onclick="wpfes_toggle_custom_fields(1)" class="wpfes_form_radio" value="wpfes_radio_in" checked="checked" /> <label for="wpfes_radio_option1">'.$wpfes_flds['wpfes_radio_in'].'</label>';
+$out .= '<p class="wpfes_form_label" style="display:none;"><input type="radio" name="wpfes_radio_option" id="wpfes_radio_option1" onclick="wpfes_toggle_custom_fields(1)" class="wpfes_form_radio" value="wpfes_radio_in" checked="checked" /> <label for="wpfes_radio_option1">'.$wpfes_flds['wpfes_radio_in'].'</label>';
 $out .= '<br/>';
 $out .= '<input type="radio" name="wpfes_radio_option" id="wpfes_radio_option2" onclick="wpfes_toggle_custom_fields(0)" class="wpfes_form_radio" value="wpfes_radio_out" /> <label for="wpfes_radio_option2">'.$wpfes_flds['wpfes_radio_out'].'</label></p>';
 

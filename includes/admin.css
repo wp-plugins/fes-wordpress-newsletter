@@ -1,3 +1,19 @@
+#wpfes_admin table, caption, tbody, tfoot, thead, tr, th, td {
+    background: inherit;
+}
+
+#wpfes_admin table tr.row-header td {
+    color: #FFF;
+    background-color: #000;
+	font-size:16px!important;
+	font-style:italic;
+	padding:3px;
+}
+#wpfes_admin table tr th {
+	font-weight:normal;
+	text-align:right;
+	padding:0 5px 0 0;
+}
 
 .row-even {
     background-color: #FFF;
@@ -5,30 +21,7 @@
 .row-odd {
     background-color: #eee;
 }
-table tr.row-header td {
-    color: #FFF;
-    background-color: #000;
-	font-size:16px!important;
-	font-style:italic;
-	padding:3px;
-}
-table tr th {
-	font-weight:normal;
-	text-align:right;
-	padding:0 5px 0 0;
-}
-.info-tip {
-    padding-left: 40px;
-    background-repeat: no-repeat;
-    background-image: url('info-tip.png');
-    background-position: left middle;
-    line-height:28px;
-	margin:5px 0;
-}
-.float-left {
-    float: left;
-    clear: right;
-}
+
 #fes-newsletter-top-menu {
 	list-style:none;
 	list-style-position: outside;
@@ -76,13 +69,25 @@ table tr th {
 	/*font-weigh: bold !important;*/
 	text-decoration: none !important;
 }
-table, caption, tbody, tfoot, thead, tr, th, td {
-    background: inherit;
-}
+
 .clear {
 	clear:both;
 }
-h3 {
+
+.info-tip {
+    padding-left: 40px;
+    background-repeat: no-repeat;
+    background-image: url('info-tip.png');
+    background-position: left middle;
+    line-height:28px;
+	margin:5px 0;
+}
+.float-left {
+    float: left;
+    clear: right;
+}
+
+h3.wpfestitle {
 	color: #FFF;
     background-color: #000;
 	font-size:16px!important;

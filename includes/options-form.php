@@ -1,3 +1,4 @@
+<div id="wpfes_admin">
 <form method="post" action="">
     <table width="100%" cellspacing="2" cellpadding="5" class="optiontable editform" id="options-table">
     <tr class="row-header"><td colspan="2">General settings</td></tr>
@@ -212,13 +213,13 @@
             <p class="info-tip">To create radioboxes instead of textboxes, use the | character to split the field name and values. <small>Example: <b>Gender|Man|Woman</b></small></p>
         </td>
       </tr>
-	  <tr> 
+	  <tr style="display:none;"> 
         <th scope="row">Subscribe label:</th>
         <td> 
           <input type="text" name="wpfes_form_fld[wpfes_radio_in]" id="wpfes_form_fld16" value="<?php echo $form_fields['wpfes_radio_in']; ?>" size="40" maxlength="64" />
         </td>
       </tr>
-	  <tr> 
+	  <tr style="display:none;"> 
         <th scope="row">Unsubscribe label:</th>
         <td> 
           <input type="text" name="wpfes_form_fld[wpfes_radio_out]" id="wpfes_form_fld17" value="<?php echo $form_fields['wpfes_radio_out']; ?>" size="40" maxlength="64" />
@@ -254,3 +255,4 @@
 alternate_table_rows('options-table');
 </script>
 <p class="info-tip"><strong>How to display newsletter plugin in pages or posts ?</strong> <br />Insert this shortcode <code>&#91;wpfes_opt_in_form&#93;</code> in the content of any pages or posts.</p>
+</div>

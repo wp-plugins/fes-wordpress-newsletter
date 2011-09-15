@@ -4,7 +4,8 @@ $send_url=get_bloginfo('wpurl').'/wp-content/plugins/'.basename(dirname(dirname(
 $email_from = stripslashes(get_option('wpfes_email_from'));
 
 ?>
-<h3>Compose and send newsletter to subscribers</h3>
+<div id="wpfes_admin">
+<h3 class="wpfestitle">Compose and send newsletter to subscribers</h3>
 <?php
     $url = get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=' . $_GET['page'].'&wpfes-mode=list';
 if ($users = $wpdb->get_results("SELECT * FROM $table_users WHERE `msg_sent` = '1' ORDER BY `id` DESC")) {
@@ -51,7 +52,7 @@ if ($users = $wpdb->get_results("SELECT * FROM $table_users WHERE `msg_sent` = '
     <tr>
         <th>Message body:<br /><small>You may use HTML tags</small></th>
         <td colspan="2"><textarea rows="10" cols="70" id="mail-body" name="mail-body"></textarea><br />
-            <p class="info-tip">To insert automatic unsubscribe link, include this text in your email: <code>#unsubscribe#</code></p>
+            <p class="info-tip">To insert automatic unsubscribe link, include this text in your email: <code>#unsubscribe#</code><br/><small>Example: If you want to unsubscribe please follow the link #unsubscribe#</small></p>
         </td>
     </tr>
     <tr>
@@ -106,7 +107,7 @@ foreach ($users as $user) {
 <hr />
 <p class="info-tip">For more advanced newsletter sending options, please consider our dedicated product, <a href="http://www.fastemailsender.com/">Fast Email Sender</a>.<!--<br />
 By default, CPanel hosted domains have a limitation of 250 emails per hour. If you exceed that, anything over the 250 limit will not be delivered.--></p>
-
+</div>
 
 
 <script type="text/javascript" >
