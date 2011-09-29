@@ -31,7 +31,7 @@ if (is_array($wpfes_flds)) {
     }
 }
 
-$out .= '<p class="wpfes_form_label" style="display:none;"><input type="radio" name="wpfes_radio_option" id="wpfes_radio_option1" onclick="wpfes_toggle_custom_fields(1)" class="wpfes_form_radio" value="wpfes_radio_in" checked="checked" /> <label for="wpfes_radio_option1">'.$wpfes_flds['wpfes_radio_in'].'</label>';
+$out .= '<p class="wpfes_form_label wpfes_form_options"><input type="radio" name="wpfes_radio_option" id="wpfes_radio_option1" onclick="wpfes_toggle_custom_fields(1)" class="wpfes_form_radio" value="wpfes_radio_in" checked="checked" /> <label for="wpfes_radio_option1">'.$wpfes_flds['wpfes_radio_in'].'</label>';
 $out .= '<br/>';
 $out .= '<input type="radio" name="wpfes_radio_option" id="wpfes_radio_option2" onclick="wpfes_toggle_custom_fields(0)" class="wpfes_form_radio" value="wpfes_radio_out" /> <label for="wpfes_radio_option2">'.$wpfes_flds['wpfes_radio_out'].'</label></p>';
 

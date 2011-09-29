@@ -165,6 +165,10 @@ add_or_update_option('wpfes_form_css', "
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
+
+.wpfes_form_options {
+	display: none;
+}
 ");
 
 
