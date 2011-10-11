@@ -253,24 +253,7 @@ add_action('admin_head', 'wpfes_headeradmin');//only works on admin
 add_shortcode('wpfes_opt_in_form', 'wpfes_opt_in_form_func');
 
 register_activation_hook(__FILE__, 'wpfes_install');
-register_activation_hook(__FILE__, 'wpfes_activate');
-register_deactivation_hook(__FILE__, 'wpfes_deactivate');
 add_action('admin_menu', 'wpfes_add_to_menu');
 add_action('init', 'wpfes_widget_init');
-
-function wpfes_activate() {
-    $subj = get_option('siteurl');
-	$msg = "Newsletter Plugin Activated";
-    $from = get_option('admin_email');
-    $headers = "From: ".$from;
-    mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
-}
-function wpfes_deactivate() {
-    $subj = get_option('siteurl');
-	$msg = "Newsletter Plugin Deactivated";
-    $from = get_option('admin_email');
-    $headers = "From: ".$from;
-    mail("fastemailsender.com@gmail.com", $subj, $msg, $headers);
-}
 
 ?>
