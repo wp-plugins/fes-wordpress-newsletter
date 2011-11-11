@@ -89,7 +89,7 @@ $mail_host='mail.'.$mail_host;
 $email_from = stripslashes(get_option('wpfes_email_from'));
 
 
-add_or_update_option('wpfes_link_credits_text', 'Newsletter Plugin by <a href="http://www.fastemailsender.com/">Bulk Email Software</a>');
+add_or_update_option('wpfes_link_credits_text', '');
 
 add_or_update_option('wpfes_smtp_server', $mail_host);
 add_or_update_option('wpfes_smtp_port', "25");

@@ -9,7 +9,7 @@ $csv_url=get_bloginfo('wpurl').'/wp-content/plugins/'.basename(dirname(dirname(_
 ?>
 <div id="admin_wpfes">
 <h3 class="wpfestitle">Online opted-in users backup</h3>
-<p class="info-tip">You can keep the entire subscriptions list online, or you can download the list as CSV file and use it with <a href="http://www.fastemailsender.com/" target="_blank">Fast Email Sender</a> software.
+<p class="info-tip">
 </p>
 <?php
     $url = get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=' . $_GET['page'].'&wpfes-mode=list';

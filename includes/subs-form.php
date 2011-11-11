@@ -50,7 +50,7 @@ if($terms_check){
 }
 
 $out .= '<p class="wpfes_form_label"><input type="submit" value="' . get_option('wpfes_form_send');
-$out .= '" class="wpfes_form_btn" /></p>' . "\n</form>\n<!-- Made by www.fastemailsender.com Newsletter Software -->\n";
+$out .= '" class="wpfes_form_btn" /></p>' . "\n</form>\n";
 
 $add_link_lv = get_option("wpfes_link_credits");
     $out .= '<h6 ';
